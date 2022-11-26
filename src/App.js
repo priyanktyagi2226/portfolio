@@ -1,23 +1,45 @@
-import logo from './logo.svg';
+
+import React, { useEffect } from "react";
+import AOS from "aos";
 import './App.css';
+import "aos/dist/aos.css";
+import RoutesData from "./Router/router";
+import AnimatedCursor from "react-animated-cursor";
 
 function App() {
+  useEffect(() => {
+    AOS.init();
+    
+  }, []);
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RoutesData />
+      <AnimatedCursor
+        innerSize={12}
+        outerSize={18}
+        color='255,204,153'
+        outerAlpha={0.2}
+        innerScale={0.7}
+        outerScale={5}
+        hasBlendMode={true}
+        outerStyle={{
+          mixBlendMode: 'exclusion'
+        }}
+        clickables={[
+          'a',
+          'input[type="text"]',
+          'input[type="email"]',
+          'input[type="number"]',
+          'input[type="submit"]',
+          'input[type="image"]',
+          'label[for]',
+          'select',
+          'textarea',
+          'button',
+          '.link'
+        ]}
+      />
     </div>
   );
 }
